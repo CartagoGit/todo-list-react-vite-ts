@@ -22,11 +22,13 @@ export const Todo = ({ todoList, deleteTodo, updateTodo }: Props) => {
 							<div className="col-8">
 								<div className="row">
 									<div className="col-6 justify-content-between d-flex flex-column">
-										<div>{oneTodo.text}</div>
+										<h4>{oneTodo.text}</h4>
 										<div>
 											<input
 												type="checkbox"
 												name={"checkBox_" + oneTodo.id}
+												checked={oneTodo.isDone}
+												onChange={() => updateTodo(oneTodo.id)}
 											/>
 											<label
 												className="ms-2 me-2"
@@ -40,7 +42,7 @@ export const Todo = ({ todoList, deleteTodo, updateTodo }: Props) => {
 										<p className="mb-0">{oneTodo.date}</p>
 									</div>
 								</div>
-								{/* {oneTodo.task?.name} */}
+								{/* {oneTodo.task?.name} PARA AÑADIR PARAMETROS OPCIONALES QUE NO TIENEN PORQUE TENER*/}
 							</div>
 							<div className="col-4 justify-content-end d-flex align-items-center">
 								<button onClick={() => deleteTodo(oneTodo.id)}>Eliminar</button>

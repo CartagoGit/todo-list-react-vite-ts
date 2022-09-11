@@ -24,14 +24,16 @@ const todoReducer = (state: TodoItem[], action: TodoAction): TodoItem[] => {
 		case "update":
 			return state.map((todo: TodoItem) => {
 				{
-					if (todo.id !== action.payload.id) {
-						return todo.isDone
-							? { ...todo, isDone: false }
-							: { ...todo, isDone: true };
-					}
+					if (todo.id === action.payload.id)
+						return { ...todo, isDone: !todo.isDone };
 					return todo;
+					// return todo.isDone
+					// 	? { ...todo, isDone: false }
+					// 	: { ...todo, isDone: true };
 				}
 			});
+		case "cleanDone":
+			return state.filter((todo: TodoItem)=> todo.isDone === false) 
 		default:
 			return state;
 	}

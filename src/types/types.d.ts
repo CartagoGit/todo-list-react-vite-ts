@@ -8,7 +8,7 @@ export interface TodoItem {
 	};
 }
 
-export type TodoAction = TodoAdd | TodoDelete | TodoUpdate;
+export type TodoAction = TodoAdd | TodoDelete | TodoUpdate | TodoCleanDone;
 
 interface TodoAdd {
 	type: "add";
@@ -24,9 +24,14 @@ interface TodoDelete {
 	};
 }
 
-interface TodoUpdate {
+interface TodoCleamDone {
 	type: "update";
 	payload: {
 		id: string;
 	};
 }
+interface TodoUpdate {
+	type: "cleanDone";
+	payload: {};
+}
+

@@ -30,6 +30,9 @@ const App = () => {
 	const updateTodo = (id: string): void => {
 		dispatch({ type: "update", payload: { id } });
 	};
+	const cleanDone = () => {
+		dispatch({ type: "cleanDone", payload: {} });
+	};
 
 	return (
 		<div className="App">
@@ -45,7 +48,8 @@ const App = () => {
 			<button
 				type="button"
 				className="mt-2"
-				onClick={() => {}}>
+				onClick={cleanDone}
+				disabled={todoList.length === 0}>
 				Eliminar Tareas hechas
 			</button>
 		</div>
@@ -65,7 +69,7 @@ const initTodos: TodoItem[] = [
 	{
 		date: new Date().toLocaleDateString(),
 		id: uuidv4(),
-		isDone: false,
+		isDone: true,
 		text: "Learn more REACT",
 	},
 	{
